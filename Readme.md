@@ -41,7 +41,8 @@ Load multiple processors from a folder called `myprocessors`, process papers fro
 |---------------------------|---------------------------|-------------------|-----------------------------------------------|
 | -V, --version         	| output the version number |					|		 										|
 | -i, --input [value]   	| Input file 				| submissions.xml 	| String 										|	
+| -a, --accepted		   	| Process and export accepted papers only | 	| String 										|	
 | -o, --output [value]  	| Outputfile		 		| out 				| String										|
 | -d, --directory [value]  	| Directory with Processors | processors		| String										|
-| -p, --processors [value] 	| A comma seperated list of Processors | 					| String										|
+| -p, --processors [value] 	| A comma seperated list of Processors | 		| String										|
 | -h, --help            	| output usage information  |					|												|
