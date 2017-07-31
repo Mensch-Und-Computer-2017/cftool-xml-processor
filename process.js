@@ -18,6 +18,7 @@ function parseProcessorList(list) {
 program
   .version('0.0.1')
   .option('-i, --input [value]', 'Input file', 'submissions.xml')
+  .option('-a, --accepted', 'Process and export only accepted papers')
   .option('-o, --output [value]', 'Output file', 'out.xml')
   .option('-d --directory [value]', 'Directory where processors are stored', '/processors')
   .option('-p, --processors <values>', 'A comma seperated list of PaperProcessors used to transform the imported xml data', parseProcessorList)
@@ -37,7 +38,7 @@ function printPapers(papers) {
   var xml = '<?xml version="1.0" encoding="UTF-8"?>\n<papers>\n';
   for (let i = 0; i < papers.length; i++) {
     let paper = papers[i];
-    xml += paper.toXML() + '\n';
+    xml += paper.toXML();
   }
   xml += '</papers>';
   fs.writeFileSync(program.output, xml);
@@ -52,12 +53,22 @@ function processPaper(paper) {
   return processedPaper;
 }
 
+function filterPapers(papers){
+  if(!program.accepted) {
+    return papers;
+  }
+  return papers.filter(function(paper){
+    return paper.isAccepted;
+  });
+}
+
 function onPapersExtracted(papers) {
-  return new Promise(function(resolve, reject) {
-    for (let i = 0; i < papers.length; i++) {
-      papers[i] = processPaper(papers[i]);
+  return new Promise(function(resolve) {
+    let filteredPapers = filterPapers(papers);
+    for (let i = 0; i < filteredPapers.length; i++) {
+      filteredPapers[i] = processPaper(filteredPapers[i]);
     }
-    resolve(papers);
+    resolve(filteredPapers);
   });
 }
 
@@ -72,7 +83,7 @@ function loadProcessor(processor) {
 }
 
 function loadSelectedProcessors(processors, pathToProcessors) {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function(resolve) {
     for (let i = 0; i < processors.length; i++) {
       let processor = path.join(pathToProcessors, (processors[i] + '.js'));
       loadProcessor(processor);
@@ -83,7 +94,7 @@ function loadSelectedProcessors(processors, pathToProcessors) {
 
 function extractPapersFromXML(file) {
   var parser = new xml2js.Parser({ explicitArray: false });
-  return new Promise(function(resolve, reject) {
+  return new Promise(function(resolve) {
     fs.readFile(file, function(err, data) {
       parser.parseString(data, function(err, result) {
         let papers = [];
