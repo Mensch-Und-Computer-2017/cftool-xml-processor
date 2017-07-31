@@ -1,0 +1,16 @@
+{
+  "name": "yes",
+  "version": "0.0.1",
+  "description": "A node.js cli tool to process xml data from ConfTool",
+  "main": "process.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexander Bazo <alexanderbazo@googlemail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.11.0",
+    "conftooljs": "git+https://github.com/Mensch-Und-Computer-2017/conftooljs.git",
+    "xml2js": "^0.4.17"
+  }
+}
