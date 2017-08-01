@@ -18,16 +18,16 @@ class DOIProcessor extends PaperProcessor {
     for(let i = paperId.length; i < MAX_PAPER_ID_LENGHT; i++) {
       paperId = '0' + paperId;
     }
-    if (paper.session.isUPATrack) {
+    if (paper.isUPAFullPaper || paper.isUPAShortPaper || paper.isUPAWorkshop || paper.isUPATutorial || paper.isUPAYoungProfessionals || paper.isUPAUsabilityChallenge) {
       doi = DOI_TEMPLATE.replace('{{KEY}}', DOI_UPA_KEY).replace('{{PAPER_ID}}', paperId);
     }
-    if (paper.session.isMCITrack) {
+    if (paper.isMCIFullpaper || paper.isMCIShortPaper) {
       doi = DOI_TEMPLATE.replace('{{KEY}}', DOI_MUC_KEY).replace('{{PAPER_ID}}', paperId);
     }
-    if (paper.session.isDemo) {
+    if (paper.isMCIDemo) {
       doi = DOI_TEMPLATE.replace('{{KEY}}', DOI_DEMO_KEY).replace('{{PAPER_ID}}', paperId);
     }
-    if (paper.session.isWorkshop) {
+    if (paper.isMCIWorkshop) {
       let workshopId = paper.session.workshopId.toString();
       for (let i = workshopId.length; i < MAX_WORKSHOP_ID_LENGHT; i++) {
         workshopId = '0' + workshopId;
