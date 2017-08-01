@@ -17,11 +17,9 @@ class PathProcessor extends PaperProcessor {
   process(paper) {
     let path,
       id = paper.id.toString();
-
     for(let i = id.length; i < MAX_PAPER_ID_LENGTH; i++) {
       id = '0' + id;
     }
-
     if (paper.isMCIFullpaper) {
       path = MCI_FULL_PAPER_PATH.replace('{{PAPER_ID}}', id);
     }
