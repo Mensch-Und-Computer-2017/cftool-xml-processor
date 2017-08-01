@@ -27,7 +27,7 @@ class PathProcessor extends PaperProcessor {
     if (paper.isMCIShortPaper) {
       path = MCI_SHORT_PAPER_PATH.replace('{{PAPER_ID}}', id);
     }
-    if (paper.MCIWorkshop) {
+    if (paper.isMCIWorkshop) {
       path = MCI_WORKSHOP_PAPER_PATH.replace('{{PAPER_ID}}', id).split('{{WORKSHOP_ID}}').join(paper.session.workshopId);
     }
     if (paper.isMCIDemo) {
