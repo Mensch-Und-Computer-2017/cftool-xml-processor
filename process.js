@@ -108,7 +108,7 @@ function extractPapersFromXML(file) {
 }
 
 (function run() {
-  var file = path.join(__dirname, program.input),
+  var file = program.input,
     processors = program.processors,
     pathToProcessors = program.directory;
   loadSelectedProcessors(processors, pathToProcessors).then(extractPapersFromXML.bind(this, file)).then(onPapersExtracted, onError).then(printPapers).catch(onError);
