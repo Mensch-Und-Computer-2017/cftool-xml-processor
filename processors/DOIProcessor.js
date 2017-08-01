@@ -2,8 +2,8 @@
 'use strict';
 
 const PaperProcessor = require('../lib/PaperProcessor.js'),
-  MAX_PAPER_ID_LENGHT = 4,
-  MAX_WORKSHOP_ID_LENGHT = 2,
+  MAX_PAPER_ID_LENGTH = 4,
+  MAX_WORKSHOP_ID_LENGTH = 2,
   DOI_TEMPLATE = 'doi:10.18420/muc2017-{{KEY}}-{{PAPER_ID}}',
   DOI_UPA_KEY = 'up',
   DOI_MUC_KEY = 'mci',
@@ -15,7 +15,7 @@ class DOIProcessor extends PaperProcessor {
   process(paper) {
     let doi,
       paperId = paper.id.toString();
-    for(let i = paperId.length; i < MAX_PAPER_ID_LENGHT; i++) {
+    for(let i = paperId.length; i < MAX_PAPER_ID_LENGTH; i++) {
       paperId = '0' + paperId;
     }
     if (paper.isUPAFullPaper || paper.isUPAShortPaper || paper.isUPAWorkshop || paper.isUPATutorial || paper.isUPAYoungProfessionals || paper.isUPAUsabilityChallenge) {
@@ -29,7 +29,7 @@ class DOIProcessor extends PaperProcessor {
     }
     if (paper.isMCIWorkshop) {
       let workshopId = paper.session.workshopId.toString();
-      for (let i = workshopId.length; i < MAX_WORKSHOP_ID_LENGHT; i++) {
+      for (let i = workshopId.length; i < MAX_WORKSHOP_ID_LENGTH; i++) {
         workshopId = '0' + workshopId;
       }
       doi = DOI_TEMPLATE.replace('{{KEY}}', DOI_WS_KEY + workshopId).replace('{{PAPER_ID}}', paperId);
