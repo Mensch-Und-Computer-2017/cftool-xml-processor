@@ -3,9 +3,10 @@
 
 const PaperProcessor = require('../lib/PaperProcessor.js'),
   MAX_PAPER_ID_LENGTH = 3,
+  MAX_WORKSHOP_ID_LENGTH = 2,
   MCI_FULL_PAPER_PATH = 'Beta MCI Proc/04 Langbeitraege/2017_MCI_{{PAPER_ID}}.pdf',
   MCI_SHORT_PAPER_PATH = 'Beta MCI Proc/05 Kurzbeitraege/2017_MCI_{{PAPER_ID}}.pdf',
-  MCI_WORKSHOP_PAPER_PATH = 'Beta WS Proc/04 Workshops/2017_{{WORKSHOP_ID}}/2017_{{WORKSHOP_ID}}_{{PAPER_ID}}.pdf',
+  MCI_WORKSHOP_PAPER_PATH = 'Beta WS Proc/04 Workshops/2017_WS{{WORKSHOP_ID}}/2017_WS{{WORKSHOP_ID}}_{{PAPER_ID}}.pdf',
   MCI_DEMO_PAPER_PATH = 'Beta WS Proc/05 Demos/2017_DEMO_{{PAPER_ID}}.pdf',
   UPA_PAPER_PATH = 'Beta UP Proc/05 Full Presentations/2017_UP_{{PAPER_ID}}.pdf',
   UPA_YOUNG_PROFESSIONALS_PAPER_PATH = 'Beta UP Proc/06 Young Professionals Presentation/2017_UP_{{PAPER_ID}}.pdf',
@@ -28,7 +29,11 @@ class PathProcessor extends PaperProcessor {
       path = MCI_SHORT_PAPER_PATH.replace('{{PAPER_ID}}', id);
     }
     if (paper.isMCIWorkshop) {
-      path = MCI_WORKSHOP_PAPER_PATH.replace('{{PAPER_ID}}', id).split('{{WORKSHOP_ID}}').join(paper.session.workshopId);
+      let workshopId = paper.session.workshopId.toString();
+      for(let i = workshopId.length; i < MAX_WORKSHOP_ID_LENGTH; i++) {
+        workshopId = '0' + workshopId;
+      }
+      path = MCI_WORKSHOP_PAPER_PATH.replace('{{PAPER_ID}}', id).split('{{WORKSHOP_ID}}').join(workshopId);
     }
     if (paper.isMCIDemo) {
       path = MCI_DEMO_PAPER_PATH.replace('{{PAPER_ID}}', id);
