@@ -8,7 +8,7 @@ const PaperProcessor = require('../lib/PaperProcessor.js'),
   MCI_SHORT_PAPER_PATH = '1_MCI_Proceedings/05_Kurzbeitraege/2017_MCI_{{PAPER_ID}}.pdf',
   MCI_WORKSHOP_PAPER_PATH = '2_Workshop_Proceedings/04_Workshops/2017_WS{{WORKSHOP_ID}}/2017_WS{{WORKSHOP_ID}}_{{PAPER_ID}}.pdf',
   MCI_DEMO_PAPER_PATH = '2_Workshop_Proceedings/05_Demos/2017_DEMO_{{PAPER_ID}}.pdf',
-  UPA_PAPER_PATH = '3_UP_Proceedings/04_Full Presentations/2017_UP_{{PAPER_ID}}.pdf',
+  UPA_PAPER_PATH = '3_UP_Proceedings/04_Full_Presentations/2017_UP_{{PAPER_ID}}.pdf',
   UPA_WORKSHOP_PAPER_PATH = '3_UP_Proceedings/05_Workshops/2017_UP_{{PAPER_ID}}.pdf',
   UPA_YOUNG_PROFESSIONALS_PAPER_PATH = '3_UP_Proceedings/06_Young_Professionals_Presentation/2017_UP_{{PAPER_ID}}.pdf';
 
