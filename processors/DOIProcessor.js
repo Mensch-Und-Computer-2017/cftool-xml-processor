@@ -4,7 +4,7 @@
 const PaperProcessor = require('../lib/PaperProcessor.js'),
   MAX_PAPER_ID_LENGTH = 4,
   MAX_WORKSHOP_ID_LENGTH = 2,
-  DOI_TEMPLATE = 'doi:10.18420/muc2017-{{KEY}}-{{PAPER_ID}}',
+  DOI_TEMPLATE = 'https://doi.org/10.18420/muc2017-{{KEY}}-{{PAPER_ID}}',
   DOI_UPA_KEY = 'up',
   DOI_MUC_KEY = 'mci',
   DOI_WS_KEY = 'ws',
