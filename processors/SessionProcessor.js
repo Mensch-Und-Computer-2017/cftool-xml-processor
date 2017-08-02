@@ -5,7 +5,7 @@ const PaperProcessor = require('../lib/PaperProcessor.js'),
   MCI_FULL_PAPER_INDICATOR = 'MCI: Full Paper',
   MCI_SHORT_PAPER_INDICTOR = 'MCI: Short Paper (Poster)',
   MCI_TUTORIAL_INDICATOR = 'MCI: Tutorial',
-  MCI_WORKSHOP_INDICATOR = ['MCI: Workshop', 'MCI-WS'],
+  MCI_WORKSHOP_INDICATOR = 'MCI-WS',
   MCI_DEMO_INDIACTOR = 'MCI: Interactive Demos',
   UPA_FULL_PAPER_INDICATOR = 'UP: Full Presentation (30 min.)',
   UPA_SHORT_PAPER_INDICATOR = 'UP: Creative Presentation (15/30 min.)',
@@ -56,7 +56,7 @@ class SessionProcessor extends PaperProcessor {
       paper.isMCITutorial = true;
       return paper;
     }
-    if (type.startsWith(MCI_WORKSHOP_INDICATOR[0]) || type.startsWith(MCI_WORKSHOP_INDICATOR[1])) {
+    if (type.startsWith(MCI_WORKSHOP_INDICATOR)) {
       paper.isMCIWorkshop = true;
       paper.session.workshopId = parseInt(paper.session.shortTitle.replace('MCI-WS', ''), 10);
       return paper;
