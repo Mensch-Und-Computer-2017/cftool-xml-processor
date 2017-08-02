@@ -21,7 +21,7 @@ class DOIProcessor extends PaperProcessor {
     if (paper.isUPAFullPaper || paper.isUPAShortPaper || paper.isUPAWorkshop || paper.isUPATutorial || paper.isUPAYoungProfessionals || paper.isUPAUsabilityChallenge) {
       doi = DOI_TEMPLATE.replace('{{KEY}}', DOI_UPA_KEY).replace('{{PAPER_ID}}', paperId);
     }
-    if (paper.isMCIFullpaper || paper.isMCIShortPaper) {
+    if (paper.isMCIFullpaper || paper.isMCIShortpaper) {
       doi = DOI_TEMPLATE.replace('{{KEY}}', DOI_MUC_KEY).replace('{{PAPER_ID}}', paperId);
     }
     if (paper.isMCIDemo) {

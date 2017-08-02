@@ -2,7 +2,7 @@
 'use strict';
 
 const PaperProcessor = require('../lib/PaperProcessor.js'),
-  MCI_POSTER_SHORT_TITLE = 'MCI-POSTER',
+  MCI_POSTER_SHORT_TITLE = 'MCI-PosterSession',
   MCI_DEMO_TITLE = 'MCI-DEMO',
   MCI_FULL_PAPER_INDICATOR = 'MCI: Full Paper',
   MCI_SHORT_PAPER_INDICTOR = 'MCI: Short Paper (Poster)',
@@ -50,9 +50,8 @@ class SessionProcessor extends PaperProcessor {
       paper.isMCIFullpaper = true;
       return paper;
     }
-    if (type === MCI_SHORT_PAPER_INDICTOR) {
+    if (type === MCI_SHORT_PAPER_INDICTOR || paper.session.shortTitle === MCI_POSTER_SHORT_TITLE) {
       paper.isMCIShortpaper = true;
-      paper.session.shortTitle = MCI_POSTER_SHORT_TITLE;
       return paper;
     }
     if (type === MCI_TUTORIAL_INDICATOR) {
